@@ -12,7 +12,7 @@ class EncargadosSgsst extends Model
     protected $table = "encargados_sgsst";
 
     protected $fillable = [
-       'encargadoId','nombreEncargado','apellidoEncargado','cedula', 'nivelEstudios',
+       'id','nombreEncargado','apellidoEncargado','cedula', 'nivelEstudios',
 			 'hojaVida', 'diploma', 'certificadoCurso50h', 'certificadoSeccionalSalud'
     ];
 }

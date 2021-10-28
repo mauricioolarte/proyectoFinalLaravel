@@ -39,33 +39,18 @@ class EncargadosSgsstController extends Controller
     public function store(Request $request){
 
 
-        //use Illuminate\Support\Facades\Hash;
-
-    //     $request->validate([
-    //         'nombre' => 'required',
-    //         'apellido' => 'required',
-    //         'cedula' => 'required',
-    //         'telefono' => 'required',
-    //         'celular' => 'required',
-    //         'direccion' => 'required',
-    //         'rol_id' => 'required',
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //         'foto' => 'required',
-    //     ],[
-    //         'nombre.required' => 'El nombre del usuario es requerido',
-    //         'apellido.required' => 'El apellido es requerido',
-    //         'cedula.required' => 'La cedula es requerida',
-    //         'telefono.required' => 'El télefono es requerido',
-    //         'celular.required' => 'El celular es requerido',
-    //         'direccion.required' => 'La dirección es requerida',
-    //         'rol_id.required' => 'El rol es requerido',
-    //         'email.required' => 'El email es requerido',
-    //         'email.email' => 'El email es no tiene el formato correcto',
-    //         'password.required' => 'Contraseña requerida',
-    //     ]
-
-    // );
+        $request->validate([
+            'nombreEncargado' => 'required',
+            'apellidoEncargado' => 'required',
+            'cedula' => 'required',
+            'nivelEstudios' => 'required',
+        	],[
+            'nombreEncargado.required' => 'El nombre del usuario es requerido',
+            'apellidoEncargado.required' => 'El apellido es requerido',
+            'cedula.required' => 'La cedula es requerida',
+            'nivelEstudios.required' => 'El nivel es requerido',
+        	]
+    		);
 
         $encargado = new EncargadosSgsst;
         $encargado->nombreEncargado = $request->nombreEncargado;
@@ -136,11 +121,10 @@ class EncargadosSgsstController extends Controller
 
         $roles = Roles::get();
 
-        $usuario = User::where('id',$id)->first();
+        $encargado = EncargadosSgsst::where('id',$id)->first();
 
-        return view('usuarios.edit',[
-            'roles' => $roles,
-            'usuario' => $usuario,
+        return view('encargadosSgsst.edit',[
+            'encargado' => $encargado,
         ]);
 
     }
@@ -149,45 +133,87 @@ class EncargadosSgsstController extends Controller
 
 
         $request->validate([
-            'nombre' => 'required',
-            'apellido' => 'required',
+            'nombreEncargado' => 'required',
+            'apellidoEncargado' => 'required',
             'cedula' => 'required',
-            'telefono' => 'required',
-            'celular' => 'required',
-            'direccion' => 'required',
-            'rol_id' => 'required',
-        ],[
-            'nombre.required' => 'El nombre del usuario es requerido',
-            'apellido.required' => 'El apellido es requerido',
+            'nivelEstudios' => 'required',
+        	],[
+            'nombreEncargado.required' => 'El nombre del usuario es requerido',
+            'apellidoEncargado.required' => 'El apellido es requerido',
             'cedula.required' => 'La cedula es requerida',
-            'telefono.required' => 'El télefono es requerido',
-            'celular.required' => 'El celular es requerido',
-            'direccion.required' => 'La dirección es requerida',
-            'rol_id.required' => 'El rol es requerido',
+            'nivelEstudios.required' => 'El nivel es requerido',
+        	]
+    		);
 
-        ]
+				// $encargado = new EncargadosSgsst;
 
-    );
-        // $usuario = User::where('id',$id)->first();
-        // $usuario->nombre = $request->nombre;
-        // $usuario->apellido = $request->apellido;
-        // $usuario->cedula = $request->cedula;
-        // $usuario->telefono = $request->telefono;
-        // $usuario->celular = $request->celular;
-        // $usuario->direccion = $request->direccion;
-        // $usuario->rol_id = $request->rol_id;
-        // $usuario->save();
+        $encargado = EncargadosSgsst::where('id',$id)->first();
 
-        $usuario = User::where('id',$id)->update([
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'cedula' => $request->cedula,
-            'telefono' => $request->telefono,
-            'celular' => $request->celular,
-            'direccion' => $request->direccion,
-            'rol_id' => $request->rol_id,
+        $encargado->nombreEncargado = $request->nombreEncargado;
+        $encargado->apellidoEncargado = $request->apellidoEncargado;
+        $encargado->cedula = $request->cedula;
+        $encargado->nivelEstudios = $request->nivelEstudios;
+        
 
-        ]);
+        if ($request->hasFile("hojaVida")) {
+           $file = $request->file("hojaVida");
+
+           $nombre = "hojaVida_".time().".".$file->guessExtension();
+
+           $ruta = public_path("hojasVida/".$nombre);
+
+           copy($file, $ruta);
+
+           $encargado->hojaVida = $nombre;
+
+        } else {
+					$encargado->hojaVida = $encargado->hojaVida;
+				}
+
+				if ($request->hasFile("diploma")) {
+           $file = $request->file("diploma");
+
+           $nombre = "diploma_".time().".".$file->guessExtension();
+
+           $ruta = public_path("diplomas/".$nombre);
+
+           copy($file, $ruta);
+
+           $encargado->diploma = $nombre;
+
+        } else {
+					$encargado->diploma = $encargado->diploma;
+				}
+				if ($request->hasFile("certificadoCurso50h")) {
+           $file = $request->file("certificadoCurso50h");
+
+           $nombre = "certificadoCurso50h_".time().".".$file->guessExtension();
+
+           $ruta = public_path("certificadosCurso50h/".$nombre);
+
+           copy($file, $ruta);
+
+           $encargado->certificadoCurso50h = $nombre;
+
+        } else {
+					$encargado->certificadoCurso50h = $encargado->certificadoCurso50h;
+				}
+
+				if ($request->hasFile("certificadoSeccionalSalud")) {
+           $file = $request->file("certificadoSeccionalSalud");
+
+           $nombre = "certificadoSeccionalSalud_".time().".".$file->guessExtension();
+
+           $ruta = public_path("certificadoSeccionalSalud/".$nombre);
+
+           copy($file, $ruta);
+
+           $encargado->certificadoSeccionalSalud = $nombre;
+
+        } else {
+					$encargado->certificadoSeccionalSalud = $encargado->certificadoSeccionalSalud;
+				}
+        $encargado->save();
 
         return back();
 

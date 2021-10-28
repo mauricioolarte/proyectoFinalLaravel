@@ -1,6 +1,6 @@
 CREATE TABLE roles
 (
-    id_rol INT NOT NULL CHECK(id_rol > 0),
+    id_rol INT NOT NULL CHECK(id_rol > 0) AUTO_INCREMENT,
     rol_name VARCHAR(255) NOT NULL,
     PRIMARY KEY(id_rol)
 );
@@ -14,7 +14,7 @@ INSERT INTO rol VALUES(4,'be');
 
 CREATE TABLE users
 (
-	usuarioId INT NOT NULL,
+	usuarioId INT NOT NULL AUTO_INCREMENT,
 	nombreUsuario VARCHAR(255) NOT NULL,
   nombre VARCHAR(255) NOT NULL,
   apellido VARCHAR(255) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE users
 -- encargado sgsst
 CREATE TABLE encargados_sgsst
 (
-	encargadoId INT NOT NULL,
+	id INT NOT NULL AUTO_INCREMENT,
 	nombreEncargado VARCHAR(255) NOT NULL,
   apellidoEncargado VARCHAR(255) NOT NULL,
   cedula int(10) NOT NULL,
@@ -48,3 +48,27 @@ CREATE TABLE encargados_sgsst
 
 INSERT INTO `encargados_sgsst` (`encargadoId`, `nombreEncargado`, `apellidoEncargado`, `cedula`, `nivelEstudios`, `hojaVida`, `diploma`, `certificadoCurso50h`, `certificadoSeccionalSalud`) VALUES ('1', 'Encargado1nombretest', 'Encargado1Apellidotest', '1234567', 'encargado1niveldeestudiostest', 'encargado1hojadevidatest', 'encargado1diplomatest', 'encargado1certificadotest', 'encargado1seccionaltest');
 
+
+
+-- configuracion empresa
+
+CREATE TABLE configuracion_empresas
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(255) NOT NULL,
+  nit VARCHAR(255) NOT NULL,
+  georre_longitude float NOT NULL,
+  georre_latitude float NOT NULL,
+  actividadEconomica VARCHAR(255) NOT NULL,
+  nivelRiesgo VARCHAR(255) NOT NULL,
+	cantidadEmpleado INT NOT NULL,
+	naturalezaJuridica VARCHAR(255) NOT NULL,
+  telefonos VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  tipoEmpresa VARCHAR(255) NOT NULL,
+
+	PRIMARY KEY (id)
+);
+
+
+INSERT INTO `configuracion_empresas` (`id`, `nombre`, `nit`, `georre_longitude`, `georre_latitude`, `actividadEconomica`, `nivelRiesgo`, `cantidadEmpleado`, `naturalezaJuridica`, `telefonos`, `email`, `tipoEmpresa`) VALUES (NULL, 'testNombre', '123456789', '124.123456', '-123.123456', 'testActividadEconomica', 'testNivelRiesgo', '1', 'testNaturalezaJuridica', 'testTelefono', 'testEmail', 'testTipoEmpresa');

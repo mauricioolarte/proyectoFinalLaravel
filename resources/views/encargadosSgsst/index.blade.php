@@ -24,7 +24,12 @@
                         <td>{{ $encargado->cedula }}</td>
                         <td>{{ $encargado->nivelEstudios}}</td>
                         <td>
- 
+                            <a href="{{ route('encargados.edit', $encargado->id) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('encargados.delete', $encargado->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

@@ -36,4 +36,11 @@ Route::delete('/usuarios/delete/{id}', [App\Http\Controllers\UsuariosController:
 Route::get('/encargados', [App\Http\Controllers\EncargadosSgsstController::class, 'index'])->name('encargados.index');
 Route::get('/encargados/create', [App\Http\Controllers\EncargadosSgsstController::class, 'create'])->name('encargados.create');
 Route::post('/encargados/store', [App\Http\Controllers\EncargadosSgsstController::class, 'store'])->name('encargados.store');
+Route::get('/encargados/edit/{id}', [App\Http\Controllers\EncargadosSgsstController::class, 'edit'])->name('encargados.edit');
+Route::put('/encargados/update/{id}', [App\Http\Controllers\EncargadosSgsstController::class, 'update'])->name('encargados.update');
+Route::delete('/encargados/delete/{id}', [App\Http\Controllers\EncargadosSgsstController::class, 'delete'])->name('encargados.delete');
+
+// routes configuracion empresa
+Route::get('/empresas', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'index'])->name('empresas.index');
+Route::get('/empresas/info/{id}', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'info'])->name('empresas.info');
 

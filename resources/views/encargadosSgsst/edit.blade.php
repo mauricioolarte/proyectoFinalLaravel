@@ -2,80 +2,72 @@
 
 @section('content')
 
-    <form action="{{ route('usuarios.update',$usuario->id) }}" method="POST">
+    <form action="{{ route('encargados.update', $encargado->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('put')
-
+				@method('put')
         <div class="row">
 
             <div class="col-4">
-                <label for="nombre" class="form-label">Nombre del usuario</label>
-                <input type="text" class="form-control" name="nombre" id="nombre"
-                    placeholder="Ingrese el nombre del usuario" value="{{ $usuario->nombre }}">
-                @if ($errors->has('nombre'))
-                    <p class="text-danger">{{ $errors->first('nombre') }}</p>
+                <label for="nombre" class="form-label">Nombre del encargado del SG-SST</label>
+                <input type="text" class="form-control" name="nombreEncargado" id="nombreEncargado"
+                    value={{$encargado->nombreEncargado}}>
+                @if ($errors->has('nombreEncargado'))
+                    <p class="text-danger">{{ $errors->first('nombreEncargado') }}</p>
                 @endif
             </div>
             <div class="col-4">
-                <label for="apellido" class="form-label">Apellido del usuario</label>
-                <input type="text" class="form-control" name="apellido" id="apellido"
-                    placeholder="Ingrese el apellido del usuario" value="{{ $usuario->apellido }}">
-                @if ($errors->has('apellido'))
-                    <p class="text-danger">{{ $errors->first('apellido') }}</p>
+                <label for="apellido" class="form-label">Apellido del encargado del SG-SST</label>
+                <input type="text" class="form-control" name="apellidoEncargado" id="apellidoEncargado"
+                    value={{$encargado->apellidoEncargado}}>
+                @if ($errors->has('apellidoEncargado'))
+                    <p class="text-danger">{{ $errors->first('apellidoEncargado') }}</p>
                 @endif
             </div>
-
             <div class="col-4">
-                <label for="cedula" class="form-label">Cedula del usuario</label>
+                <label for="cedula" class="form-label">Cedula del encargado del SG-SST</label>
                 <input type="text" class="form-control" name="cedula" id="cedula"
-                    placeholder="Ingrese el cedula del usuario" value="{{ $usuario->cedula }}">
+                    value={{$encargado->cedula}}>
                 @if ($errors->has('cedula'))
                     <p class="text-danger">{{ $errors->first('cedula') }}</p>
                 @endif
             </div>
-
             <div class="col-4">
-                <label for="telefono" class="form-label">Télefono del usuario</label>
-                <input type="text" class="form-control" name="telefono" id="telefono"
-                    placeholder="Ingrese el telefono del usuario" value="{{ $usuario->telefono }}">
-                @if ($errors->has('telefono'))
-                    <p class="text-danger">{{ $errors->first('telefono') }}</p>
+                <label for="nivelEstudios" class="form-label">Nivel de estudios</label>
+                <input type="text" class="form-control" name="nivelEstudios" id="nivelEstudios"
+                    value={{$encargado->nivelEstudios}}>
+                @if ($errors->has('nivelEstudios'))
+                    <p class="text-danger">{{ $errors->first('nivelEstudios') }}</p>
                 @endif
             </div>
 
-            <div class="col-4">
-                <label for="celular" class="form-label">Celular del usuario</label>
-                <input type="text" class="form-control" name="celular" id="celular"
-                    placeholder="Ingrese el celular del usuario" value="{{ $usuario->celular }}">
-                @if ($errors->has('celular'))
-                    <p class="text-danger">{{ $errors->first('celular') }}</p>
+            <div class="col-3">
+                <label for="hojaVida" class="form-label">hoja de Vida</label>
+                <input type="file" class="form-control" name="hojaVida" id="hojaVida" >
+                <input type="hidden" class="form-control" name="hojaVida" id="hojaVida" value={{$encargado->hojaVida}} >
+
+                @if ($errors->has('hojaVida'))
+                    <p class="text-danger">{{ $errors->first('hojaVida') }}</p>
                 @endif
             </div>
-
-            <div class="col-4">
-                <label for="direccion" class="form-label">Dirección del usuario</label>
-                <input type="text" class="form-control" name="direccion" id="direccion"
-                    placeholder="Ingrese el direccion del usuario" value="{{ $usuario->direccion }}">
-                @if ($errors->has('direccion'))
-                    <p class="text-danger">{{ $errors->first('direccion') }}</p>
+						<div class="col-3">
+                <label for="diploma" class="form-label">diploma</label>
+                <input type="file" class="form-control" name="diploma" id="diploma" >
+                @if ($errors->has('diploma'))
+                    <p class="text-danger">{{ $errors->first('diploma') }}</p>
                 @endif
             </div>
-
-            <div class="col-4">
-                <label for="rol_id" class="form-label">Rol del usuario</label>
-                <select class="form-select" aria-label="Default select example" name="rol_id" id="rol_id">
-                    <option value="">Seleccione el rol del usuario</option>
-                    @foreach ($roles as $rol)
-                        @if ($rol->id == $usuario->rol_id)
-                            <option value="{{ $rol->id }}" selected>{{ $rol->nombre }}</option>
-                        @else
-                            <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
-                        @endif
-                    @endforeach
-
-                </select>
-                @if ($errors->has('rol_id'))
-                    <p class="text-danger">{{ $errors->first('rol_id') }}</p>
+						 <div class="col-3">
+                <label for="certificadoCurso50h" class="form-label">certificadoCurso50h</label>
+                <input type="file" class="form-control" name="certificadoCurso50h" id="certificadoCurso50h" >
+                @if ($errors->has('certificadoCurso50h'))
+                    <p class="text-danger">{{ $errors->first('certificadoCurso50h') }}</p>
+                @endif
+            </div>
+						<div class="col-3">
+                <label for="certificadoSeccionalSalud" class="form-label">certificadoSeccionalSalud</label>
+                <input type="file" class="form-control" name="certificadoSeccionalSalud" id="certificadoSeccionalSalud" >
+                @if ($errors->has('certificadoSeccionalSalud'))
+                    <p class="text-danger">{{ $errors->first('certificadoSeccionalSalud') }}</p>
                 @endif
             </div>
 
