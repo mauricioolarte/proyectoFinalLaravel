@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <a href="{{ route('usuarios.create') }}" class="btn btn-success">Crear empresa</a>
+    <a href="{{ route('empresas.create') }}" class="btn btn-success">Crear empresa</a>
 
     <div class="row">
         <table class="table">

@@ -72,3 +72,28 @@ CREATE TABLE configuracion_empresas
 
 
 INSERT INTO `configuracion_empresas` (`id`, `nombre`, `nit`, `georre_longitude`, `georre_latitude`, `actividadEconomica`, `nivelRiesgo`, `cantidadEmpleado`, `naturalezaJuridica`, `telefonos`, `email`, `tipoEmpresa`) VALUES (NULL, 'testNombre', '123456789', '124.123456', '-123.123456', 'testActividadEconomica', 'testNivelRiesgo', '1', 'testNaturalezaJuridica', 'testTelefono', 'testEmail', 'testTipoEmpresa');
+
+
+--Riesgos Psicosociales
+CREATE TABLE riesgos_psicosociales
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	nombreDoc  VARCHAR(255) NOT NULL,
+	updated_at TIMESTAMP,
+	created_at TIMESTAMP,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO `riesgos_psicosociales` (`id`, `nombreDoc`, `updated_at`, `created_at`) VALUES ('1', 'documento por crear', current_timestamp(), '0000-00-00 00:00:00.000000');
+
+--plan emergencia
+CREATE TABLE plan_emergencia
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	nombreDoc  VARCHAR(255) NOT NULL,
+	updated_at TIMESTAMP,
+	created_at TIMESTAMP,
+	PRIMARY KEY (id)
+);
+
+INSERT INTO `plan_emergencia` (`id`, `nombreDoc`, `updated_at`, `created_at`) VALUES ('1', 'documento por crear', current_timestamp(), '0000-00-00 00:00:00.000000');

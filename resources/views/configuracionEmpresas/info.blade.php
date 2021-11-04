@@ -52,8 +52,8 @@
 										<tr>
 
                         <td>
-													  <a href="{{ route('empresas.info', $empresa->id) }}" class="btn btn-warning">Editar</a>
-                            <form action="{{ route('empresas.info', $empresa->id) }}" method="POST">
+													  <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn btn-warning">Editar</a>
+                            <form action="{{ route('empresas.delete', $empresa->id) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>

@@ -43,4 +43,30 @@ Route::delete('/encargados/delete/{id}', [App\Http\Controllers\EncargadosSgsstCo
 // routes configuracion empresa
 Route::get('/empresas', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'index'])->name('empresas.index');
 Route::get('/empresas/info/{id}', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'info'])->name('empresas.info');
+Route::get('/empresas/create', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'create'])->name('empresas.create');
+Route::post('/empresas/store', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'store'])->name('empresas.store');
+Route::get('/empresas/edit/{id}', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'edit'])->name('empresas.edit');
+Route::put('/empresas/update/{id}', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'update'])->name('empresas.update');
+Route::delete('/empresas/delete/{id}', [App\Http\Controllers\ConfiguracionEmpresasController::class, 'delete'])->name('empresas.delete');
 
+
+// routes compromisos y responsabilidades del gerente y empleados
+
+Route::get('/compromisosresponsabilidades', [App\Http\Controllers\CompromisosResponsabilidadesController::class, 'index'])->name('compromisos.index');
+
+
+// riesgos Psicosociales
+
+Route::get('/riesgospsicosociales', [App\Http\Controllers\RiesgosPsicosocialesController::class, 'index'])->name('riesgospsicosociales.index');
+Route::get('/riesgospsicosociales/create', [App\Http\Controllers\RiesgosPsicosocialesController::class, 'create'])->name('riesgospsicosociales.create');
+Route::post('/riesgospsicosociales/store', [App\Http\Controllers\RiesgosPsicosocialesController::class, 'store'])->name('riesgospsicosociales.store');
+Route::get('/riesgospsicosociales/edit/{id}', [App\Http\Controllers\RiesgosPsicosocialesController::class, 'edit'])->name('riesgospsicosociales.edit');
+Route::put('/riesgospsicosociales/update/{id}', [App\Http\Controllers\RiesgosPsicosocialesController::class, 'update'])->name('riesgospsicosociales.update');
+
+// plan Emergencia
+
+Route::get('/planemergencia', [App\Http\Controllers\PlanEmergenciaController::class, 'index'])->name('planemergencia.index');
+Route::get('/planemergencia/create', [App\Http\Controllers\PlanEmergenciaController::class, 'create'])->name('planEmergencia.create');
+Route::post('/planemergencia/store', [App\Http\Controllers\PlanEmergenciaController::class, 'store'])->name('planEmergencia.store');
+Route::get('/planemergencia/edit/{id}', [App\Http\Controllers\PlanEmergenciaController::class, 'edit'])->name('planEmergencia.edit');
+Route::put('/planemergencia/update/{id}', [App\Http\Controllers\PlanEmergenciaController::class, 'update'])->name('planEmergencia.update');

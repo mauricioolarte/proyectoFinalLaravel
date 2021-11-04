@@ -9,7 +9,7 @@ use App\Models\ConfiguracionEmpresas;
 use App\Models\Roles;
 
 
-class ConfiguracionEmpresasController extends Controller
+class CompromisosResponsabilidadesController extends Controller
 {
     // public function __construct()
     // {
@@ -20,12 +20,7 @@ class ConfiguracionEmpresasController extends Controller
 
     public function index(){
 
-        $empresas = ConfiguracionEmpresas::get();
-
-
-        return view('configuracionEmpresas.index',[
-            'empresas' => $empresas,
-        ]);
+        return view('compromisos.index');
 
     }
 
